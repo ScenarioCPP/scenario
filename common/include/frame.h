@@ -1,5 +1,6 @@
 #ifndef FRAME_H
 #define FRAME_H
+#include "scenesharedlib_global.h"
 
 #include<QRectF>
 #include <QVector>
@@ -8,7 +9,7 @@
 typedef QVector<int> FramesContainer;
 typedef QMap<QString,FramesContainer > AnimMap;
 
-class Frame
+class SCENESHAREDLIB_EXPORT Frame
 {
     int m_x,m_y,m_width,m_height,m_offset_x,m_offset_y;
 public:

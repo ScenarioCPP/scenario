@@ -1,10 +1,11 @@
 #ifndef IMAGE_H
 #define IMAGE_H
+#include "scenesharedlib_global.h"
 
 #include<QGraphicsItem>
 #include <QPainter>
 
-class Image : public QObject,public QGraphicsItem
+class SCENESHAREDLIB_EXPORT Image : public QObject,public QGraphicsItem
 {
     Q_OBJECT
     Q_INTERFACES(QGraphicsItem)

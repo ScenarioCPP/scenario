@@ -1,5 +1,6 @@
 #ifndef SCENARIOMANAGER_H
 #define SCENARIOMANAGER_H
+#include "scenesharedlib_global.h"
 
 #include "scenario.h"
 #include "gameengine.h"
@@ -11,17 +12,18 @@
 #include <QPointer>
 #include <QMap>
 
-typedef QMap<QString,ScenearioPtr> ScenarioContainer;
+typedef QMap<QString,ScenarioPtr> ScenarioContainer;
 typedef QPointer<QObject> ObjectPtr;
 typedef QShowEvent ShowEvent;
 typedef QHideEvent HideEvent;
 typedef QCloseEvent CloseEvent;
 
-class ScenarioManager : public QObject
+class SCENESHAREDLIB_EXPORT ScenarioManager : public QObject
 {
   Q_OBJECT
 
   ScenarioContainer m_scenarios;
+  ScenarioPtr m_start_scenario;
   QString m_current_scenario;
   GameEnginePtr m_gameengine;
   bool m_firstshow;
@@ -31,9 +33,10 @@ class ScenarioManager : public QObject
 public:
   explicit ScenarioManager(ObjectPtr parent = nullptr);
   ~ScenarioManager();
-  void add_scenario(ScenearioPtr scenario);
+  ScenarioManager *add_scenario(ScenarioPtr scenario);
   ScenarioContainer scenarios() const;
-  ScenearioPtr scenario(const QString &name) const;
+  ScenarioPtr scenario(const QString &name) const;
+  ScenarioManager *start(ScenarioPtr mainscene);
   void start_game_engine();
   void stop_game_engine();
   QString get_asset_root();

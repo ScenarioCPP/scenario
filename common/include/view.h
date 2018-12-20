@@ -1,5 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
+#include "scenesharedlib_global.h"
 
 #include <QWidget>
 #include <QGraphicsView>
@@ -8,7 +9,7 @@
 
 #include "scene.h"
 
-class View : public QGraphicsView
+class SCENESHAREDLIB_EXPORT View : public QGraphicsView
 {
     Q_OBJECT
     ScenePtr m_scene;

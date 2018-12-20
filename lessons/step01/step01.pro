@@ -2,8 +2,11 @@
 #
 #
 #-------------------------------------------------
+#message(compiling in $$shell_path($$OUT_PWD))
 
-include(../../common/lib.pri)
+# pull in all of the common support libraries and startup
+include(../../common/support.pri)
+
 TARGET = step01
 TEMPLATE = app
 

@@ -1,5 +1,6 @@
 #ifndef WORLD_H
 #define WORLD_H
+#include "scenesharedlib_global.h"
 
 #include <QPointer>
 #include <QList>
@@ -29,7 +30,7 @@ typedef QVector<PortalPtr> PortalList;
 typedef QVector<QString> Strings;
 
 
-class World : public QObject
+class SCENESHAREDLIB_EXPORT World : public QObject
 {
     Q_OBJECT
 

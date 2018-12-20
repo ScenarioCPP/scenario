@@ -1,10 +1,11 @@
 #ifndef IACTORFACTORY_H
 #define IACTORFACTORY_H
+#include "scenesharedlib_global.h"
 
 #include "actor.h"
 #include "assetsmanager.h"
 
-class IActorFactory
+class SCENESHAREDLIB_EXPORT IActorFactory
 {
   AssetsManagerPtr m_assets;
 

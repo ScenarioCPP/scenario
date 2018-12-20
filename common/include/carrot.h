@@ -1,11 +1,13 @@
 #ifndef CARROT_H
 #define CARROT_H
+#include "scenesharedlib_global.h"
+
 #include "npcharacter.h"
 #include "animator.h"
 #include "collider.h"
 #include<QJsonObject>
 
-class Carrot : public NPCharacter
+class SCENESHAREDLIB_EXPORT Carrot : public NPCharacter
 {
 
   ColliderPtr m_collider;

@@ -1,5 +1,6 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
+#include "scenesharedlib_global.h"
 
 #include <QObject>
 #include <QPointer>
@@ -8,7 +9,7 @@
 
 typedef QMap<QString,int> ButtonKeyMap;
 
-class ButtonInput : public QObject
+class SCENESHAREDLIB_EXPORT ButtonInput : public QObject
 {
     Q_OBJECT
 

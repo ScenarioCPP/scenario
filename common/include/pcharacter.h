@@ -1,11 +1,12 @@
 #ifndef PCHARACTER_H
 #define PCHARACTER_H
+#include "scenesharedlib_global.h"
 #include "icharacter.h"
 #include "actor.h"
 #include "collider.h"
 #include "controller.h"
 
-class PCharacter : public Actor
+class SCENESHAREDLIB_EXPORT PCharacter : public Actor
 {
   Q_OBJECT
 

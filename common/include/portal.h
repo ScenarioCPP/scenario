@@ -1,10 +1,11 @@
 #ifndef PORTAL_H
 #define PORTAL_H
+#include "scenesharedlib_global.h"
 
 #include <QObject>
 #include "actor.h"
 
-class Portal : public QObject
+class SCENESHAREDLIB_EXPORT Portal : public QObject
 {
     Q_OBJECT
 

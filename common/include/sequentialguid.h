@@ -1,5 +1,6 @@
 #ifndef SEQUENTIALGUID_H
 #define SEQUENTIALGUID_H
+#include "scenesharedlib_global.h"
 
 #include <QObject>
 #include <QUuid>
@@ -12,7 +13,7 @@
 /**
  * @brief The SequentialGUID class - define a class for creating a Sequential GUID
  */
-class SequentialGUID : public QObject
+class SCENESHAREDLIB_EXPORT SequentialGUID : public QObject
 {
     Q_OBJECT
 public:

@@ -2,8 +2,9 @@
 #
 #
 #-------------------------------------------------
+message(compiling in $$shell_path($$OUT_PWD))
 
-include(../../common/lib.pri)
+include(../../common/support.pri)
 TARGET = game01
 TEMPLATE = app
 

@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "mainscene.h"
+#include <QMessageBox>
 #include "ui_mainwindow.h"
 
 #include <QDebug>
@@ -18,12 +20,25 @@ MainWindow::MainWindow(QWidget *parent) :
  */
 void MainWindow::start_scenario()
 {
+    auto m = new scene::Main;
+    m->init();
+    if(m->scenario_name().isEmpty())
+    {
+        QMessageBox msgBox;
+        msgBox.setText("The main Scenario has no name.");
+        msgBox.setInformativeText("The main Scenario has not been named in the init() function of scene::Main.\n\n  This is a critical step,the program will shut down now.");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        msgBox.exec();
+    }
+    Q_ASSERT(!m->scenario_name().isEmpty());
     m_sm = (new ScenarioManager(this))   // ScenarioManager runs for the lifetime of the Window
             ->connect_show_event(this)
             ->connect_hide_event(this)
             ->connect_close_event(this)
             ->connect_view_initialized(this)
             ->connect_resize_event(this)
+            ->start(m)
         ;
 }
 

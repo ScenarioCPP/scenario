@@ -1,0 +1,29 @@
+#-------------------------------------------------
+#
+#
+#-------------------------------------------------
+message(compiling in $$shell_path($$OUT_PWD))
+QT += core gui
+# Windows Arghh!!!!!
+#QT += webenginewidgets
+QT += multimedia multimediawidgets
+include(../../common/support.pri)
+
+INCLUDEPATH += $$PWD/../../common/include
+DEPENDPATH += $$PWD/../../common/include
+
+#DEPENDPATH += . ../../common/lib
+#INCLUDEPATH += ../../common/include
+
+unix{ QMAKE_POST_LINK = ln -s $$shell_path($$OUT_PWD)/../../common/lib/*.dylib  $$shell_path($$OUT_PWD/$$TARGET).app/Contents/MacOS/.
+}
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../common/lib/release/ -lScenarioLib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../common/lib/debug/ -lScenarioLib
+else:unix: LIBS += -L$$PWD/../../common/lib/ -lScenarioLib
+

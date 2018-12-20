@@ -1,10 +1,12 @@
 #ifndef PLAYERFACTORY_H
 #define PLAYERFACTORY_H
+#include "scenesharedlib_global.h"
+
 #include "iactorfactory.h"
 #include "assetsmanager.h"
 #include "pcharacter.h"
 
-class PlayerFactory : public IActorFactory
+class SCENESHAREDLIB_EXPORT PlayerFactory : public IActorFactory
 {
 public:
   PlayerFactory(AssetsManagerPtr assets);

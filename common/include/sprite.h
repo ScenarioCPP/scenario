@@ -1,5 +1,6 @@
 #ifndef SPRITE_H
 #define SPRITE_H
+#include "scenesharedlib_global.h"
 
 #include <QPointer>
 #include<QGraphicsItem>
@@ -19,7 +20,7 @@
  * NOTES:
  *
  */
-class Sprite : public QObject,public QGraphicsItem
+class SCENESHAREDLIB_EXPORT Sprite : public QObject,public QGraphicsItem
 {
     Q_OBJECT
     Q_INTERFACES(QGraphicsItem)

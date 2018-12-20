@@ -1,10 +1,11 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
+#include "scenesharedlib_global.h"
 
 #include "shape.h"
 
 
-class Circle : public Shape
+class SCENESHAREDLIB_EXPORT Circle : public Shape
 {
 public:
   Circle(double radius);

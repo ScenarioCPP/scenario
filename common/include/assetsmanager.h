@@ -1,5 +1,6 @@
 #ifndef ASSETSMANAGER_H
 #define ASSETSMANAGER_H
+#include "scenesharedlib_global.h"
 
 #include <QObject>
 #include <QString>
@@ -30,7 +31,7 @@ typedef QMap<QString,AnimationIndexContainer> PlayerAnimationIndexMap;
 typedef QJsonObject PlayerObject;
 typedef QMap<QString,PlayerObject> PlayerMap;
 
-class AssetsManager : public QObject
+class SCENESHAREDLIB_EXPORT AssetsManager : public QObject
 {
     Q_OBJECT
 

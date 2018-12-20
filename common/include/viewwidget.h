@@ -1,5 +1,6 @@
 #ifndef VIEWWIDGET_H
 #define VIEWWIDGET_H
+#include "scenesharedlib_global.h"
 
 #include <QPointer>
 #include <QWidget>
@@ -14,7 +15,7 @@
 #include "actor.h"
 #include "assetsmanager.h"
 
-class ViewWidget : public QWidget
+class SCENESHAREDLIB_EXPORT ViewWidget : public QWidget
 {
     Q_OBJECT
     int         m_tile_size;

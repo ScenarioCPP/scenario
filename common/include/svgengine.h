@@ -1,5 +1,7 @@
 #ifndef SVGENGINE_H
 #define SVGENGINE_H
+#include "scenesharedlib_global.h"
+
 #include <QDomDocument>
 #include <QGraphicsSvgItem>
 #include <QIODevice>
@@ -11,7 +13,7 @@
 typedef QList<QDomElement> SvgElementList;
 typedef QMap<QString,QGraphicsSvgItem*> ItemMap;
 
-class SvgEngine
+class SCENESHAREDLIB_EXPORT SvgEngine
 {
     QDomDocument m_domDocument;
     QSvgRenderer *m_renderer;

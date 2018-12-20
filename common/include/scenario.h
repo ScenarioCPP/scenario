@@ -1,5 +1,7 @@
 #ifndef SCENARIO_H
 #define SCENARIO_H
+#include "scenesharedlib_global.h"
+
 #include <QObject>
 #include <QMap>
 #include <QString>
@@ -12,7 +14,7 @@ typedef QMap<QString,WorldPtr> WorldContainer;
 typedef QMap<QString,ViewWidgetPtr> ViewContainer;
 typedef QPointer<QMediaPlayer> MediaPlayerPtr;
 
-class Scenario : public QObject
+class SCENESHAREDLIB_EXPORT Scenario : public QObject
 {
   Q_OBJECT
 
@@ -29,6 +31,7 @@ public:
   enum ActorType {PLAYER,NPC};
 
   explicit Scenario(QObject *parent = nullptr);
+  virtual void init() = 0;
   virtual void create() = 0;
   virtual void configure() = 0;
   virtual void act(qint64 time) = 0;
@@ -44,7 +47,7 @@ public:
   void add_world(const QString &scenario_name,WorldPtr world);
   WorldPtr world(const QString &scenario_name) const;
   void start_world(const QString &scenario_name);
-  void remove_from_world(SpritePtr s);
+  void remove(SpritePtr s);
   void add_actor(const QString &world_name,ActorPtr a,ActorType t);
   QString start_world() const;
   QString world_zone(const QString &world_name) const;
@@ -57,6 +60,7 @@ public:
   QString asset_root() const;
   void asset_root(const QString &asset);
   QGraphicsItem* add_graphics_item(QGraphicsItem *item);
+  void install_root(WorldPtr world);
 
 protected:
   void play_sound(const QUrl &url);
@@ -67,6 +71,6 @@ private slots:
   virtual void on_update(qint64 time);
 };
 
-typedef QPointer<Scenario> ScenearioPtr;
+typedef QPointer<Scenario> ScenarioPtr;
 
 #endif // SCENARIO_H

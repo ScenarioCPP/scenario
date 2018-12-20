@@ -1,12 +1,13 @@
 #ifndef COLLIDER_H
 #define COLLIDER_H
+#include "scenesharedlib_global.h"
 
 #include<QObject>
 #include<QPointer>
 
 #include "actor.h"
 
-class Collider : public QObject
+class SCENESHAREDLIB_EXPORT Collider : public QObject
 {
     Q_OBJECT
 

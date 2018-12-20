@@ -1,5 +1,6 @@
 #ifndef SCENE_H
 #define SCENE_H
+#include "scenesharedlib_global.h"
 
 #include <QPointer>
 #include<QGraphicsScene>
@@ -19,7 +20,7 @@ typedef QImage Image;
 typedef QSharedPointer<Image> ImagePtr;
 
 
-class Scene : public QGraphicsScene
+class SCENESHAREDLIB_EXPORT Scene : public QGraphicsScene
 {
     Q_OBJECT
     AssetsManagerPtr m_assets;

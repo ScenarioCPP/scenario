@@ -1,5 +1,6 @@
 #ifndef HELPDIALOG_H
 #define HELPDIALOG_H
+#include "scenesharedlib_global.h"
 
 #include <QDialog>
 
@@ -7,7 +8,7 @@ namespace Ui {
 class HelpDialog;
 }
 
-class HelpDialog : public QDialog
+class SCENESHAREDLIB_EXPORT HelpDialog : public QDialog
 {
     Q_OBJECT
 

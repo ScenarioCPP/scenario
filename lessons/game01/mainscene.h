@@ -78,24 +78,11 @@ class Main: public Scenario
     ActorPtr m_player;
 
 public:
+    void init() override {scenario_name("rabbit-trap");}
     void create() override;
     void configure() override;
     void act(qint64 time) override;
 
-    /*!
-     * \brief add_scenario
-     * \param name
-     * \param world
-     *
-     * adds this scenario with the given world
-     */
-    void add_scenario(const QString &name,WorldPtr world)
-    {
-      if(scenario_name() != name )
-            scenario_name(name);  // we need to name the Main scenario, it's also the first world name
-      add_world(world);
-      start_world(scenario_name());
-    }
 
     /*!
      * \brief create_player

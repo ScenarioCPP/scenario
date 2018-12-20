@@ -1,6 +1,6 @@
 #ifndef ACTOR_H
 #define ACTOR_H
-
+#include "scenesharedlib_global.h"
 #include <QObject>
 #include <QPixmap>
 #include <QColor>
@@ -22,7 +22,7 @@ typedef QPointer<QMediaPlayer> MediaPlayerPtr;
  * in the game.
  *
  */
-class Actor : public QObject
+class SCENESHAREDLIB_EXPORT Actor : public QObject
 {
     Q_OBJECT
 
@@ -185,6 +185,7 @@ signals:
     void sprite_moved(const QPointF &pos);
     void signal_collision(Sprite *,QGraphicsItem *);
     void current_sprite(const Actor *a);
+    void signal_action(const QString &string);
 
 };
 typedef QPointer<Actor> ActorPtr;

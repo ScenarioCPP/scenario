@@ -1,10 +1,11 @@
 #ifndef SHAPE_H
 #define SHAPE_H
+#include "scenesharedlib_global.h"
 
 #include <QGraphicsItem>
 #include <QObject>
 
-class Shape : public QObject,public QGraphicsItem
+class SCENESHAREDLIB_EXPORT Shape : public QObject,public QGraphicsItem
 {
   Q_OBJECT
   Q_INTERFACES(QGraphicsItem)

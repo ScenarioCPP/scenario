@@ -172,9 +172,44 @@ void World::load_scene(const QString &zone)
 void World::on_update(qint64 timestamp)
 {
     portal_collision_check(timestamp);
-    act(timestamp);  // call the subclass loop function
+    act(timestamp);  // call the subclassed act function
 }
 
+/*!
+ * \brief World::portal_collision_check
+ * \param timestamp
+ */
+void World::portal_collision_check(qint64 timestamp)
+{
+    Q_UNUSED(timestamp)
+
+    for(auto player : m_players)
+    {
+        for(auto p : m_portals)
+        {
+            if(p->collide_object(player))
+            {
+                // this is where we go through the portal
+                on_portal_entry(*p);
+                player->set_pos(QPointF(p->destination_x(),p->destination_y()));
+                break;
+            }
+        }
+    }
+
+}
+
+
+/*!
+ * \brief World::on_portal_entry
+ * \param p
+ */
+void World::on_portal_entry(const Portal &p)
+{
+    stop_world();
+    load_scene(p.destination_zone());
+    start_world();
+}
 
 /*!
  * \brief World::add_object
@@ -682,37 +717,6 @@ void World::on_music(bool checked)
 
 
 
-void World::portal_collision_check(qint64 timestamp)
-{
-    Q_UNUSED(timestamp)
-
-    for(auto player : m_players)
-    {
-        for(auto p : m_portals)
-        {
-            if(p->collide_object(player))
-            {
-                // this is where we go through the portal
-                on_portal_entry(*p);
-                player->set_pos(QPointF(p->destination_x(),p->destination_y()));
-                break;
-            }
-        }
-    }
-
-}
-
-
-/*!
- * \brief World::on_portal_entry
- * \param p
- */
-void World::on_portal_entry(const Portal &p)
-{
-    stop_world();
-    load_scene(p.destination_zone());
-    start_world();
-}
 
 /*!
  * \brief World::on_timer_change

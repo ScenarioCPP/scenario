@@ -30,9 +30,8 @@
  */
 void scene::Main::create()
 {
-    name("main");  // we need to name the Main scenario, it's also the first world name
-    add_world(name(),new MainWorld());
-    start_world(name());
+    add_world(scenario_name(),new MainWorld());
+    start_world(scenario_name());
 
     loop_start(false);
 }

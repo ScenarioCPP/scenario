@@ -1,12 +1,13 @@
 #ifndef TILESET_H
 #define TILESET_H
+#include "scenesharedlib_global.h"
 
 #include <QSharedPointer>
 #include<QVector>
 #include "frame.h"
 
 
-class TileSet
+class SCENESHAREDLIB_EXPORT TileSet
 {
    int m_columns;
    int m_tile_size;

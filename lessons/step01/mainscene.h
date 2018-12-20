@@ -13,7 +13,9 @@ class Main: public Scenario
 {
 
     ActorPtr m_player;
+
 public:
+    void init() override {scenario_name("main");}
     void create() override;
     void configure() override;
     void act(qint64 time) override;

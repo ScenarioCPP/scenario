@@ -1,5 +1,6 @@
 #ifndef TILEMAPDIALOG_H
 #define TILEMAPDIALOG_H
+#include "scenesharedlib_global.h"
 
 #include <QDialog>
 #include "assetsmanager.h"
@@ -8,7 +9,7 @@ namespace Ui {
 class TilemapDialog;
 }
 
-class TilemapDialog : public QDialog
+class SCENESHAREDLIB_EXPORT TilemapDialog : public QDialog
 {
     Q_OBJECT
 

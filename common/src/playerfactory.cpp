@@ -12,8 +12,15 @@ Actor *PlayerFactory::create(const QString &name)
         key_map.insert("Right",Qt::Key_D);
         key_map.insert("Down",Qt::Key_S);
         key_map.insert("Up",Qt::Key_Space);
-        PCharacter *player = new PCharacter(new Sprite(conf["width"].toInt(),conf["height"].toInt(),assets(),
-                                            assets()->player_animations()[name]),new Collider(),new Controller(key_map),nullptr);
+        PCharacter *player = new PCharacter(
+                new Sprite( conf["width"].toInt(),
+                            conf["height"].toInt(),
+                            assets(),assets()->player_animations()[name]),
+
+                new Collider(),
+                new Controller(key_map),
+                nullptr);
+
         assert(player->sprite() != nullptr);
         player->velocity_inc(conf["velocity"].toDouble());
         player->jump_height(conf["jumppower"].toDouble());
@@ -32,5 +39,10 @@ Actor *PlayerFactory::create(const QString &name)
 
 Actor *PlayerFactory::new_character(const QString &name)
 {
-    return create(name.toLower());
+    ActorPtr a = nullptr;
+    if(name == "Bunny")  // only creating Bunny's for right now
+    {
+        a = create(name.toLower());
+    }
+    return a;
 }

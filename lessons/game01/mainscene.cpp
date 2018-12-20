@@ -1,3 +1,4 @@
+#include<iostream>
 #include "mainscene.h"
 
 /*!
@@ -27,8 +28,7 @@
  */
 void scene::Main::create()
 {
-    add_scenario("rabbit-trap",new MainWorld()); // initialize a new scenario with the World subtype MainWorld
-    loop_start(false);  // this will cause the act function to not be called on startup, it can be started later
+    install_root(new MainWorld); //  install the root World
 }
 
 /*!
@@ -46,7 +46,8 @@ void scene::Main::configure()
     create_npc("Carrot",64,64,true);
 
     // How about some game music?
-    music_play_list(scenario_name(),{"mars"});
+    music_play_list(scenario_name(),{"o_fortuna","mars"});
+    loop_start(false);  // this will cause the act function to not be called on startup, it can be started later
 }
 
 /*!
@@ -70,7 +71,7 @@ void scene::Main::act(qint64 time)
         if(sprite->get_type() == CARROT || sprite->get_type() == 2)
         {
             playerscore++;
-            remove_from_world(sprite);  // it's actually the world scene, but this is ok
+            remove(sprite);
             play_pickup_sound("pickup01");
             score(m_player->name(),playerscore);
         }

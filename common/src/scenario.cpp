@@ -87,7 +87,7 @@ void Scenario::start_world(const QString &name)
 /*!
  * \brief Scenario::remove_from_world
  */
-void Scenario::remove_from_world(SpritePtr s)
+void Scenario::remove(SpritePtr s)
 {
   this->world(m_default_world)->remove(s);
 }
@@ -112,7 +112,18 @@ void Scenario::add_actor(const QString &world_name,ActorPtr a, Scenario::ActorTy
   }
 }
 
-
+/*!
+ * \brief create_world
+ * \param name
+ * \param world
+ *
+ * adds this world to the given scenario
+ */
+void Scenario::install_root(WorldPtr world)
+{
+  add_world(world);
+  start_world(scenario_name());
+}
 
 /*!
  * \brief Scenario::default_world

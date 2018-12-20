@@ -1,5 +1,4 @@
 #include "scenariomanager.h"
-#include "mainscene.h"
 #include "scene.h"
 #include "global_defines.h"
 #include <QtMath>
@@ -33,9 +32,10 @@ ScenarioManager::~ScenarioManager()
  * \param name
  * \param scenario
  */
-void ScenarioManager::add_scenario(ScenearioPtr scenario)
+ScenarioManager *ScenarioManager::add_scenario(ScenarioPtr scenario)
 {
     m_scenarios.insert(scenario->scenario_name(),scenario);
+    return this;
 }
 
 /*!
@@ -52,9 +52,21 @@ ScenarioContainer ScenarioManager::scenarios() const
  * \param name
  * \return
  */
-ScenearioPtr ScenarioManager::scenario(const QString &name) const
+ScenarioPtr ScenarioManager::scenario(const QString &name) const
 {
-    return m_scenarios[name];
+  return m_scenarios[name];
+}
+
+/*!
+ * \brief ScenarioManager::start
+ * \param mainscene
+ *
+ * The first scenario to start
+ */
+ScenarioManager *ScenarioManager::start(ScenarioPtr mainscene)
+{
+    m_start_scenario = mainscene;
+    return this;
 }
 
 /*!
@@ -176,31 +188,31 @@ void ScenarioManager::on_show(QShowEvent *evt)
     if(!m_firstshow)
     {
 
-        auto main_scenario = new scene::Main();
-        main_scenario->create(); // run the user defined create for the main scenario
-        main_scenario->asset_root(get_asset_root());
-        assert(!main_scenario->scenario_name().isEmpty());
-        m_current_scenario = main_scenario->scenario_name();
-        m_current_world_name = (main_scenario->start_world().isEmpty()) ? "main" : main_scenario->start_world();
-        auto assets = new AssetsManager(main_scenario->asset_root(),m_current_world_name);
-        auto viewwidget = main_scenario->create_view(assets,m_current_world_name);
-        main_scenario->add_view(m_current_world_name,viewwidget);
+        //auto main_scenario = new scene::Main();
+        m_start_scenario->create(); // run the user defined create for the main scenario
+        m_start_scenario->asset_root(get_asset_root());
+        assert(!m_start_scenario->scenario_name().isEmpty());
+        m_current_scenario = m_start_scenario->scenario_name();
+        m_current_world_name = (m_start_scenario->start_world().isEmpty()) ? "main" : m_start_scenario->start_world();
+        auto assets = new AssetsManager(m_start_scenario->asset_root(),m_current_world_name);
+        auto viewwidget = m_start_scenario->create_view(assets,m_current_world_name);
+        m_start_scenario->add_view(m_current_world_name,viewwidget);
 
-        auto w = main_scenario->world(m_current_world_name);
+        auto w = m_start_scenario->world(m_current_world_name);
 
         w->view_widget(viewwidget);
-        w->assets(main_scenario->view(m_current_world_name)->assets());
+        w->assets(m_start_scenario->view(m_current_world_name)->assets());
         w->game_engine(m_gameengine);
         m_gameengine->connect_update(w);
         viewwidget->view()->connect_keypress_event(w);
-        m_gameengine->connect_update(main_scenario);
+        m_gameengine->connect_update(m_start_scenario);
         w->setup();  // call the World setup function
         w->setup_display(); // set up the display for the world (user defined)
 
-        main_scenario->configure(); // configure the main scenario
+        m_start_scenario->configure(); // configure the main scenario
 
-        if(main_scenario->loop_start()) start_game_engine(); // if it is auto_start the processing loop starts
-        add_scenario(main_scenario); // add it to the scenario container
+        if(m_start_scenario->loop_start()) start_game_engine(); // if it is auto_start the processing loop starts
+        add_scenario(m_start_scenario); // add it to the scenario container
         m_firstshow = true;
 
         emit signal_view_initialized(viewwidget);

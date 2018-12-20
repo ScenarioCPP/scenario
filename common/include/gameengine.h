@@ -1,5 +1,6 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
+#include "scenesharedlib_global.h"
 
 #include<QObject>
 #include<QPointer>
@@ -15,7 +16,7 @@ it's running at a different speed. That would be a bad user experience, so we fi
 it with a fixed step game loop. In addition, you can do things like frame dropping
 and interpolation with a fixed step loop, which allow your game to play and look
 smooth on slower devices rather than freezing or lagging to the point of unplayability. */
-class GameEngine : public QObject
+class SCENESHAREDLIB_EXPORT GameEngine : public QObject
 {
     Q_OBJECT
 

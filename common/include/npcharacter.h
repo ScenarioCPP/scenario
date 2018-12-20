@@ -1,11 +1,13 @@
 #ifndef NPCHARACTER_H
 #define NPCHARACTER_H
+#include "scenesharedlib_global.h"
+
 #include "actor.h"
 #include "animator.h"
 #include "collider.h"
 #include<QJsonObject>
 
-class NPCharacter : public Actor
+class SCENESHAREDLIB_EXPORT NPCharacter : public Actor
 {
 
   ColliderPtr m_collider;

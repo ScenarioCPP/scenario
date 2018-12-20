@@ -5,7 +5,15 @@
 #  Added AssetsManager, moved initialization to World
 #
 #-------------------------------------------------
-
+macx{
+QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/*.dylib  ../common/lib/.
+}
+unix:!macx{
+QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/*.so  ../common/lib/.
+}
+win32 {
+QMAKE_POST_LINK = copy $$shell_path($$OUT_PWD)\\*.dll ..\\common\\lib
+}
 QT += core gui
 # Windows Arghh!!!!!
 #QT += webenginewidgets

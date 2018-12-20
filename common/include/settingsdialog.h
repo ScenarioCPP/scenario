@@ -1,5 +1,7 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
+#include "scenesharedlib_global.h"
+
 #include <QDialog>
 #include <QtWidgets>
 #include <QMap>
@@ -15,7 +17,7 @@ typedef QMap<QString,QString> DataMap;
 typedef QPair<QString,QString> DataPair;
 
 //! [0]
-class GeneralTab : public QWidget
+class SCENESHAREDLIB_EXPORT GeneralTab : public QWidget
 {
     Q_OBJECT
 
@@ -32,7 +34,7 @@ signals:
 
 
 //! [1]
-class SettingsDialog : public QDialog
+class SCENESHAREDLIB_EXPORT SettingsDialog : public QDialog
 {
     Q_OBJECT
     DataMap m_settings;
