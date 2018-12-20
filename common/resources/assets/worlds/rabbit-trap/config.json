@@ -1,0 +1,5 @@
+{
+   "game_title" : "Rabbit Trap",
+   "zones" : ["00","01","02","03","04"],
+    "maps_base" : ":/assets/maps/rabbit-trap"
+}

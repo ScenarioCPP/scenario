@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/images/backgrounds/dirt01.png</file>
+        <file>assets/maps/rabbit-trap/tilemap.png</file>
+        <file>assets/maps/rabbit-trap/zone00.json</file>
+        <file>assets/maps/rabbit-trap/zone01.json</file>
+        <file>assets/maps/rabbit-trap/zone02.json</file>
+        <file>assets/maps/rabbit-trap/zone03.json</file>
+        <file>assets/maps/rabbit-trap/zone04.json</file>
+        <file>assets/worlds/rabbit-trap/config.json</file>
+    </qresource>
+</RCC>

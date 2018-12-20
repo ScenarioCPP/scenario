@@ -1,0 +1,28 @@
+{
+   "game_title" : "Rabbit Trap",
+   "zones" : ["00","01","02","03","04"],
+   "maps_base" : ":/assets/maps/rabbit-trap",
+   "background_music" : "qrc:/assets/sounds/background/bk01.mp3",
+   "sounds" : {
+      "background" : {
+            "bk01" : "bk01.mp3",
+            "bk02" : "bk02.mp3",
+            "bk03" : "bk03.mp3",
+            "bk04" : "bk04.mp3",
+            "bk05" : "bk05.mp3",
+            "loop1" : "loop1.mp3",
+            "mars" : "mars.mp3",
+            "o_fortuna" : "o_fortuna.mp3"
+
+      },
+      "jump" : {
+         "jump01" : "jump01.mp3",
+         "jump02" : "jump02.mp3"
+      },
+      "pickup" : {
+         "pickup01" : "pickup01.mp3"
+      }
+    },
+   "friction" : 0.78,
+   "gravity" : 3.0
+}
