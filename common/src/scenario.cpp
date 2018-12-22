@@ -79,7 +79,7 @@ WorldPtr Scenario::world(const QString &name ) const
  * \brief Scenario::default_world
  * \param name
  */
-void Scenario::start_world(const QString &name)
+void Scenario::main_world(const QString &name)
 {
   m_default_world = name;
 }
@@ -119,17 +119,17 @@ void Scenario::add_actor(const QString &world_name,ActorPtr a, Scenario::ActorTy
  *
  * adds this world to the given scenario
  */
-void Scenario::install_root(WorldPtr world)
+void Scenario::install(WorldPtr world)
 {
   add_world(world);
-  start_world(scenario_name());
+  main_world(scenario_name());
 }
 
 /*!
  * \brief Scenario::default_world
  * \return
  */
-QString Scenario::start_world() const
+QString Scenario::main_world() const
 {
   return m_default_world;
 }

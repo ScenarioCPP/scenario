@@ -23,7 +23,7 @@ public:
 
 }
 
-class MainWorld : public World
+class GameWorld : public World
 {
     Q_OBJECT
 public:
@@ -39,12 +39,12 @@ public:
      * This constructor allows the option of creating an unbounded world,
      * which actors can move outside the boundaries of.
      */
-    MainWorld(GameEnginePtr ge=nullptr, AssetsManagerPtr assets=nullptr, ViewWidgetPtr display=nullptr, QObject *parent=nullptr) :
+    GameWorld(GameEnginePtr ge=nullptr, AssetsManagerPtr assets=nullptr, ViewWidgetPtr display=nullptr, QObject *parent=nullptr) :
       World(ge,assets,display,parent)
     {
     }
 
-    virtual ~MainWorld() {}
+    virtual ~GameWorld() {}
 
     /*!
      * \brief RabbitTrap::setup

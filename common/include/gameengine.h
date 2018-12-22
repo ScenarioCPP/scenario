@@ -8,6 +8,7 @@
 #include<QTimer>
 #include <QEvent>
 
+typedef QPointer<QTimer> TimerPtr;
 
 /* This is a fixed time step game loop. It can be used for any game and will ensure
 that game state is updated at the same rate across different devices which is important
@@ -25,14 +26,14 @@ class SCENESHAREDLIB_EXPORT GameEngine : public QObject
     qint64 m_time; // The most recent timestamp of loop execution.
     bool m_updated = false;  // Whether or not the update function has been called since the last cycle
     int m_timer_id;
+    TimerPtr m_timer;
 
 protected:
 
     void run(qint64 time_stamp);
-    virtual void timerEvent(QTimerEvent *event) override;
 
 protected slots:
-    void handle_run(QTimerEvent *event);
+    void handle_run();
 
 public:
     GameEngine(int time_step,QObject *parent = nullptr);

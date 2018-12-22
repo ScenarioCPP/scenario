@@ -11,6 +11,8 @@ GameEngine::GameEngine(int time_step, QObject *parent) :
     m_time_step(time_step),
     m_accumulated_time(0)
 {
+  m_timer = new QTimer;
+  connect(m_timer,SIGNAL(timeout()),this,SLOT(handle_run()));
 }
 
 /*!
@@ -76,21 +78,10 @@ void GameEngine::run(qint64 time_stamp)
 }
 
 /*!
- * \brief GameEngine::timerEvent
- * \param event
- */
-void GameEngine::timerEvent(QTimerEvent *event)
-{
-    handle_run(event);
-}
-
-/*!
  * \brief GameEngine::handle_run
  */
-void GameEngine::handle_run(QTimerEvent *event)
+void GameEngine::handle_run()
 {
-    Q_UNUSED(event)
-
     run( QDateTime::currentMSecsSinceEpoch());
 }
 
@@ -102,7 +93,7 @@ void GameEngine::start()
 {
     m_accumulated_time = m_time_step;
     m_time = QDateTime::currentMSecsSinceEpoch();
-    m_timer_id = startTimer(m_time_step);
+    m_timer->start(m_time_step);
 }
 
 /*!
@@ -111,12 +102,5 @@ void GameEngine::start()
  */
 void GameEngine::stop()
 {
-    if(m_timer_id != -1)
-    {
-        killTimer(m_timer_id);
-        m_timer_id = -1;
-    }
-    else {
-        qDebug() << "Can't kill timer " << m_timer_id;
-    }
+    m_timer->stop();
 }

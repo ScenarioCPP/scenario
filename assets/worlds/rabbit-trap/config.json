@@ -20,7 +20,8 @@
          "jump02" : "jump02.mp3"
       },
       "pickup" : {
-         "pickup01" : "pickup01.mp3"
+         "pickup01" : "pickup01.mp3",
+         "pickup02" : "pickup02.mp3"
       }
     },
    "friction" : 0.78,

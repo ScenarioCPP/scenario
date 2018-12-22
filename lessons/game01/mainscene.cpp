@@ -28,7 +28,7 @@
  */
 void scene::Main::create()
 {
-    install_root(new MainWorld); //  install the root World
+    install(new GameWorld); //  install the root World
 }
 
 /*!
@@ -72,7 +72,7 @@ void scene::Main::act(qint64 time)
         {
             playerscore++;
             remove(sprite);
-            play_pickup_sound("pickup01");
+            play_pickup_sound("pickup02");
             score(m_player->name(),playerscore);
         }
       }

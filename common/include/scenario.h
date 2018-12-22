@@ -46,10 +46,10 @@ public:
   void add_world(WorldPtr world);
   void add_world(const QString &scenario_name,WorldPtr world);
   WorldPtr world(const QString &scenario_name) const;
-  void start_world(const QString &scenario_name);
+  void main_world(const QString &scenario_name);
   void remove(SpritePtr s);
   void add_actor(const QString &world_name,ActorPtr a,ActorType t);
-  QString start_world() const;
+  QString main_world() const;
   QString world_zone(const QString &world_name) const;
   qint64 last_time() const;
   qint64 frame_rate() const;
@@ -60,7 +60,7 @@ public:
   QString asset_root() const;
   void asset_root(const QString &asset);
   QGraphicsItem* add_graphics_item(QGraphicsItem *item);
-  void install_root(WorldPtr world);
+  void install(WorldPtr world);
 
 protected:
   void play_sound(const QUrl &url);

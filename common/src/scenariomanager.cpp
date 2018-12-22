@@ -193,7 +193,7 @@ void ScenarioManager::on_show(QShowEvent *evt)
         m_start_scenario->asset_root(get_asset_root());
         assert(!m_start_scenario->scenario_name().isEmpty());
         m_current_scenario = m_start_scenario->scenario_name();
-        m_current_world_name = (m_start_scenario->start_world().isEmpty()) ? "main" : m_start_scenario->start_world();
+        m_current_world_name = (m_start_scenario->main_world().isEmpty()) ? "main" : m_start_scenario->main_world();
         auto assets = new AssetsManager(m_start_scenario->asset_root(),m_current_world_name);
         auto viewwidget = m_start_scenario->create_view(assets,m_current_world_name);
         m_start_scenario->add_view(m_current_world_name,viewwidget);

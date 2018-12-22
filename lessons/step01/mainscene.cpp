@@ -9,7 +9,7 @@
  *
  * So, what do we do here?
  *
- * The setup function is where the worlds and the objects that interact with the World are created.
+ * The create function is where the Worlds and the objects that interact with the World are created.
  *
  * scene::Main is a subtype of the abstract Scenario, A Scenario ties together the following elements:
  *
@@ -30,9 +30,7 @@
  */
 void scene::Main::create()
 {
-    add_world(scenario_name(),new MainWorld());
-    start_world(scenario_name());
-
+    install(new GameWorld); //  install the root World
     loop_start(false);
 }
 
@@ -57,8 +55,8 @@ void scene::Main::act(qint64 time)
 {
     Q_UNUSED(time)   // this turns off the warning at compile time
 
-    circle->setX(circle->x() + 1);
-    circle->setY(circle->y() + 1);
+    circle->setX(circle->x() + 0.5);
+    circle->setY(circle->y() + 0.5);
 
 }
 

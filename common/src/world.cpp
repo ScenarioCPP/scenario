@@ -56,7 +56,7 @@ World::World(GameEnginePtr ge,AssetsManagerPtr assets,ViewWidgetPtr display,QObj
     m_assets(assets)
 {
 
-    if(! m_assets.isNull())
+    if(! m_assets.isNull())  // Make sure that we have a valid assets pointer
       init_world();
     m_collider = new Collider(); // Here's the new collider class.
     m_mediaplayer = QPointer<QMediaPlayer>(new QMediaPlayer);
@@ -108,6 +108,8 @@ void World::init_world()
 /*!
  * \brief World::broadcast_score
  * \param name
+ *
+ * Specific application to games for Worlds
  */
 void World::broadcast_score(const QString &name, int score)
 {

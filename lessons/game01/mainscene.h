@@ -7,7 +7,7 @@
 #include <QDebug>
 
 
-class MainWorld : public World
+class GameWorld : public World
 {
     Q_OBJECT
 public:
@@ -21,12 +21,12 @@ public:
      * The size of the world (in number of cells) and the
      * size of each cell (in pixels) must be specified in the AssetManager.
      */
-    MainWorld(GameEnginePtr ge=nullptr, AssetsManagerPtr assets=nullptr, ViewWidgetPtr display=nullptr, QObject *parent=nullptr) :
+    GameWorld(GameEnginePtr ge=nullptr, AssetsManagerPtr assets=nullptr, ViewWidgetPtr display=nullptr, QObject *parent=nullptr) :
       World(ge,assets,display,parent)
     {
     }
 
-    virtual ~MainWorld() {}
+    virtual ~GameWorld() {}
 
     /*!
      * \brief RabbitTrap::setup
