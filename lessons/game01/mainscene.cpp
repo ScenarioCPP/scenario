@@ -46,7 +46,7 @@ void scene::Main::configure()
     create_npc("Carrot",64,64,true);
 
     // How about some game music?
-    music_play_list(scenario_name(),{"o_fortuna","mars"});
+    music_play_list(scenario_name(),{"bk04"});
     loop_start(false);  // this will cause the act function to not be called on startup, it can be started later
 }
 
@@ -68,11 +68,11 @@ void scene::Main::act(qint64 time)
   if(m_player->check_collisions()) {
       for(auto sprite : m_player->colliding_sprites())
       {
-        if(sprite->get_type() == CARROT || sprite->get_type() == 2)
+        if(sprite->is_a(CARROT))
         {
             playerscore++;
             remove(sprite);
-            play_pickup_sound("pickup02");
+            play_pickup_sound("pickup01");
             score(m_player->name(),playerscore);
         }
       }

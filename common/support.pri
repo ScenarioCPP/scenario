@@ -52,8 +52,8 @@ RESOURCES += \
 DEPENDPATH += $$PWD//include
 
 
-unix{ QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/../../common/lib/*.dylib  $$shell_path($$OUT_PWD/$$TARGET).app/Contents/MacOS/.
-}
+#unix{ QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/../../common/lib/*.dylib  $$shell_path($$OUT_PWD/$$TARGET).app/Contents/MacOS/. }
+QMAKE_LFLAGS += '-Wl,-rpath,../../../../../common/lib'
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

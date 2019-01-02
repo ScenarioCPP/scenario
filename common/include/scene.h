@@ -15,7 +15,6 @@
 typedef QVector<int> TileMapContainer;
 typedef QVector<QRectF> TileRectContainer;
 typedef QPointer<TileRectContainer> TileRectContainerPtr;
-typedef QPixmap Picture;
 typedef QImage Image;
 typedef QSharedPointer<Image> ImagePtr;
 

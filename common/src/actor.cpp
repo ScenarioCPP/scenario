@@ -284,7 +284,8 @@ bool Actor::check_collisions()
     {
         m_colliding_sprites.clear();
         for(auto item : sprite()->collidingItems()) {
-            m_colliding_sprites.push_back(static_cast<Sprite*>(item));
+            if(static_cast<Sprite*>(item)->get_type() != sprite()->get_type())
+                m_colliding_sprites.push_back(static_cast<Sprite*>(item));
             //emit signal_collision(sprite(),item);
         }
         return true;
@@ -1066,6 +1067,11 @@ void Actor::set_type(int t)
 int Actor::get_type() const
 {
   return sprite()->get_type();
+}
+
+bool Actor::is_a(int t) const
+{
+    return sprite()->is_a(t);
 }
 
 void Actor::has_sound(bool mp)

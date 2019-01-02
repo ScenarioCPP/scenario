@@ -72,6 +72,7 @@ public:
     QString name() const;
     void connect_sprite_moving(QObject *obj);
     void connect_sprite_moved(QObject *obj);
+    bool is_a(int t) const;
 
 
 protected:

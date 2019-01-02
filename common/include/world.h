@@ -1,5 +1,6 @@
 #ifndef WORLD_H
 #define WORLD_H
+#include "npcharacter.h"
 #include "scenesharedlib_global.h"
 
 #include <QPointer>
@@ -122,7 +123,7 @@ protected slots:
     void on_y_inc(double y);
     void on_key_event(QKeyEvent *e);
     void on_resize_event(QResizeEvent *e);
-    void on_spawn_npc(double x,double y,const QString &type);
+    virtual NPCharacter *on_spawn_npc(double x,double y,const QString &type);
     void on_music(bool);
     void start_game();
     void stop_game();

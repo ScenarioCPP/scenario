@@ -6,6 +6,7 @@
 #include "npcfactory.h"
 #include <QDebug>
 
+const int CARROT = 254;
 
 class GameWorld : public World
 {
@@ -26,13 +27,13 @@ public:
     {
     }
 
-    virtual ~GameWorld() {}
+    virtual ~GameWorld() override {}
 
     /*!
      * \brief RabbitTrap::setup
      * \param world
      */
-    void setup()
+    void setup() override
     {
         // Setup the Scene and the View
             load_scene(assets()->zone());
@@ -43,7 +44,7 @@ public:
      *
      * this method is called after the view is initialized
      */
-    void setup_display()
+    void setup_display() override
     {
           display()->connect_scene_changed(this)
                    ->connect_gravity_changed(this)
@@ -57,11 +58,17 @@ public:
                    ->connect_start_stop(this)
                    ;
     }
+    NPCharacter *on_spawn_npc(double x, double y, const QString &type) override
+    {
+        auto npc = World::on_spawn_npc(x,y,type);
+        npc->set_type(CARROT);
+        return npc;
+    }
     /*!
      * \brief MainWorld::loop
      * time loop method
      */
-    void act(qint64 timestamp)
+    void act(qint64 timestamp) override
     {
         Q_UNUSED(timestamp);
     }
@@ -71,7 +78,6 @@ public:
 namespace scene
 {
 
-const int CARROT = 254;
 class Main: public Scenario
 {
 

@@ -697,7 +697,7 @@ void World::on_resize_event(QResizeEvent *e)
     view()->view()->setMatrix(matrix);
 }
 
-void World::on_spawn_npc(double x, double y, const QString &type)
+NPCharacter *World::on_spawn_npc(double x, double y, const QString &type)
 {
     auto npc = NPCFactory(m_assets).new_character(type);
     if(npc != nullptr)
@@ -709,6 +709,7 @@ void World::on_spawn_npc(double x, double y, const QString &type)
     else {
         qDebug() << type << "NPC is not implemented";
     }
+    return npc;
 }
 
 

@@ -171,6 +171,7 @@ public:
     CollidingList colliding_sprites() const;
     void set_type(int t);
     int get_type() const;
+    bool is_a(int t) const;
     void has_sound(bool mp);
 
 public slots:

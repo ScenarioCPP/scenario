@@ -599,8 +599,10 @@ void ViewWidget::on_spawn_npc(bool checked)
 {
     Q_UNUSED(checked)
     QString type = m_npc_type->currentText();
-    double x = m_npc_x->text().toDouble();
-    double y = m_npc_y->text().toDouble();
+    //double x = m_npc_x->text().toDouble();
+    //double y = m_npc_y->text().toDouble();
+    double x = qrand() % 195;
+    double y = qrand() % 128;
     emit spawn_npc(x,y,type);
     emit focus();
 }

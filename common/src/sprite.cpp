@@ -39,6 +39,7 @@ Sprite::Sprite(int width, int height, AssetsManagerPtr assets, TileSetPtr tile_s
     m_tile_set = tile_set;
     m_animating = true;
     m_hitshape = false;
+    setObjectName("Sprite");
 }
 
 /*!
@@ -338,5 +339,10 @@ void Sprite::connect_sprite_moving(QObject *obj)
  */
 void Sprite::connect_sprite_moved(QObject *obj)
 {
-    connect(this,SIGNAL(signal_moved(const QPointF &)),obj,SLOT(on_sprite_moved(const QPointF &)));
+  connect(this,SIGNAL(signal_moved(const QPointF &)),obj,SLOT(on_sprite_moved(const QPointF &)));
+}
+
+bool Sprite::is_a(int t) const
+{
+    return get_type() == t;
 }
