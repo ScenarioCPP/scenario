@@ -6,7 +6,7 @@
 #
 #-------------------------------------------------
 macx{
-QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/*.dylib  ../common/lib/.
+QMAKE_POST_LINK = mkdir ../lib;cp $$shell_path($$OUT_PWD)/*.dylib  ../common/lib/.
 }
 unix:!macx{
 QMAKE_POST_LINK = cp $$shell_path($$OUT_PWD)/*.so  ../common/lib/.
