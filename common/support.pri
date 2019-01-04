@@ -62,5 +62,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/release/ -lScenarioLib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/debug/ -lScenarioLib
-else:unix: LIBS += -L$$PWD/lib/ -lScenarioLib
+else:unix: LIBS += -L$$PWD/lib/ -lScenarioLib -lbox2d
 

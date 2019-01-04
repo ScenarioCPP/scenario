@@ -1,0 +1,8 @@
+{
+   "game_title" : "Main",
+   "zones" : ["00"],
+   "maps_base" : ":/assets/maps/rabbit-trap",
+   "background_music" : "qrc:/assets/sounds/background/bk01.mp3",
+   "friction" : 0.78,
+   "gravity" : 3.0
+}
