@@ -48,7 +48,7 @@ bool AssetsManager::load(const QString &zone,AssetsManager::SaveFormat saveForma
 {
 
     QString f = m_root+"/maps/"+m_world + "/zone"+zone+".json";
-    assert(QFile(f).exists());
+    Q_ASSERT(QFile(f).exists());
 
     QFile loadFile(f);
 
@@ -83,7 +83,7 @@ void AssetsManager::read(const QJsonObject &json)
     if(! QFile(m_tile_map_name).exists())
     {
            m_tile_map_name = m_root+"/maps/"+m_world+"/" + m_tile_map_name; // try local directory
-           Q_ASSERT(QFile(m_tile_map_name).exists()); // if not assert and end
+           Q_ASSERT(QFile(m_tile_map_name).exists()); // if not Q_ASSERT and end
     }
     m_tile_map_image = PixmapPtr(new QPixmap(m_tile_map_name));
     m_scene_title = json["scene_title"].toString();
@@ -248,7 +248,7 @@ void AssetsManager::world(const QString &w)
  */
 void AssetsManager::change_root(const QString &root)
 {
-    assert(QDir(root).exists());
+    Q_ASSERT(QDir(root).exists());
     m_root = root;
     qDebug() << "AssetsManager::change_root" << root << " -- currently unimplemented";
     //load_default_config(root);

@@ -7,18 +7,14 @@
  */
 Controller::Controller(const ButtonKeyMap &bk_map,QObject *parent) : QObject(parent)
 {
-    m_down = new ButtonInput();
-    m_up = new ButtonInput();
-    m_left = new ButtonInput();
-    m_right = new ButtonInput();
     m_button_key_map = bk_map;
-
-    // much better solution, putting it in a map,
-    // now we have constant look up for the key_down_up event
-    m_input_button_map.insert(m_button_key_map["Down"],m_down);
-    m_input_button_map.insert(m_button_key_map["Up"],m_up);
-    m_input_button_map.insert(m_button_key_map["Left"],m_left);
-    m_input_button_map.insert(m_button_key_map["Right"],m_right);
+    // putting it in a map,
+    // now we have a scalable solution for look up of the key_down_up event
+    // all that is needed is to add the ButtonInput handler here
+    m_input_button_map.insert(m_button_key_map["Down"],m_down = new ButtonInput);
+    m_input_button_map.insert(m_button_key_map["Up"],m_up = new ButtonInput);
+    m_input_button_map.insert(m_button_key_map["Left"],m_left = new ButtonInput);
+    m_input_button_map.insert(m_button_key_map["Right"],m_right = new ButtonInput);
 }
 
 

@@ -27,7 +27,7 @@ Actor::Actor(QObject *parent) : QObject(parent)
  */
 Actor::Actor(SpritePtr sprite,QObject *parent) : Actor(parent)
 {
-    assert(sprite != nullptr);
+    Q_ASSERT(sprite != nullptr);
     m_sprite = sprite;
     m_x = 0;
     m_y = 0;
@@ -52,7 +52,7 @@ Actor::Actor(int width, int height,
 {
     m_assets = assets;
     m_sprite = new Sprite(width,height,m_assets,tile_set);
-    assert(m_sprite != nullptr);
+    Q_ASSERT(m_sprite != nullptr);
     m_sprite->animator(new Animator());
     m_width = width;
     m_height = height;
@@ -64,7 +64,7 @@ Actor::Actor(int width, int height,
  */
 SpritePtr Actor::sprite() const
 {
-  assert(m_sprite != nullptr);
+  Q_ASSERT(m_sprite != nullptr);
   return m_sprite;
 }
 
@@ -86,7 +86,7 @@ Actor *Actor::movable(bool m)
  */
 bool Actor::movable() const
 {
-    assert(m_sprite != nullptr);
+    Q_ASSERT(m_sprite != nullptr);
     return (m_sprite->flags() & QGraphicsItem::ItemIsMovable);
 }
 
@@ -96,7 +96,7 @@ bool Actor::movable() const
  */
 Actor* Actor::selectable(bool s)
 {
-    assert(m_sprite != nullptr);
+    Q_ASSERT(m_sprite != nullptr);
     m_sprite->setFlag(QGraphicsItem::ItemIsSelectable,s);
     return this;
 }
@@ -107,7 +107,7 @@ Actor* Actor::selectable(bool s)
  */
 bool Actor::selectable() const
 {
-  assert(m_sprite != nullptr);
+  Q_ASSERT(m_sprite != nullptr);
   return (m_sprite->flags() & QGraphicsItem::ItemIsSelectable);
 }
 
@@ -117,7 +117,7 @@ bool Actor::selectable() const
  */
 bool Actor::hitshape() const
 {
-  assert(m_sprite != nullptr);
+  Q_ASSERT(m_sprite != nullptr);
   return m_sprite->hitshape();
 }
 
@@ -128,7 +128,7 @@ bool Actor::hitshape() const
  */
 Actor *Actor::hitshape(bool hs)
 {
-    assert(m_sprite != nullptr);
+    Q_ASSERT(m_sprite != nullptr);
     m_sprite->hitshape(hs);
     return this;
 }
@@ -139,7 +139,7 @@ Actor *Actor::hitshape(bool hs)
  */
 QRectF Actor::rect() const
 {
-    assert(m_sprite != nullptr);
+    Q_ASSERT(m_sprite != nullptr);
     return m_sprite->rect();
 }
 
@@ -1002,7 +1002,7 @@ void Actor::base_y(double y)
  */
 void Actor::tooltip(const QString &tool_tip)
 {
-   assert(sprite() != nullptr);
+   Q_ASSERT(sprite() != nullptr);
    sprite()->setToolTip(tool_tip);
 }
 
