@@ -161,6 +161,7 @@ qint64 Scenario::frame_rate() const
 /*!
  * \brief Scenario::connect_key_down_up
  * \param a
+ *  Connect an actor to the worlds keyboard controller
  */
 void Scenario::connect_key_down_up(const QString &world_name,ActorPtr a)
 {

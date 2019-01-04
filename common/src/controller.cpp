@@ -81,6 +81,7 @@ ButtonInputPtr Controller::btn_up()
  */
 void Controller::key_down_up(QKeyEvent *e)
 {
-    if(m_input_button_map.keys().contains(e->key()))
-        m_input_button_map[e->key()]->getInput(e->type() == QEvent::KeyPress);
+    auto button = m_input_button_map[e->key()];
+    if(!button.isNull())  // value from key needs to exist
+        button->getInput(e->type() == QEvent::KeyPress);
 }
